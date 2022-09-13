@@ -1,0 +1,7 @@
+<% title @comment.name %>
+
+<%= render @comment %>
+
+<%= link_to "Edit", edit_blog_comment_path(@blog,@comment), class:"btn btn-primary" %> |
+<%= link_to "Delete", blog_comment_path(@blog,@comment), method: :delete, data: {confirm: "are you sure?"}, class:"btn btn-primary" %> |
+<%= link_to "Back", blog_comments_path(@blog), class:"btn btn-primary" %>

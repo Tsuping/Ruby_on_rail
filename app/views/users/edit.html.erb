@@ -1,0 +1,14 @@
+<%title "Update user" %>
+
+<%= bootstrap_form_with(model: current_user, local: true) do |f| %>
+    <%= f.alert_message "Please fix the errors below.", error_summary: false %>
+    <%= f.text_field :name %>
+    <%= f.email_field :email %>
+    <% if current_user.has_password? %>
+        <%= f.password_field :password %>
+        <%= f.password_field :password_confirmation, label: "Confirm Password" %>
+    <% end %>
+    <%= f.form_group do %>
+        <%= f.primary "Update" %>
+    <% end %>
+<% end %>

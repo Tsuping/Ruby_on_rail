@@ -1,0 +1,36 @@
+
+    <div id="blog_<%= blog.id %>" class="blog">
+        
+        <div class="column">
+            <div class="card bg-light mb-3" style="max-width: 18rem;">
+              <div class="card-header"><p><strong>author: </strong><%= blog.author %></p></div>
+              <div class="card-body">
+                <h5 class="card-title"><p><strong>Title: </strong><%= link_to_unless_current blog.title, blog %></p></h5>
+                <p class="card-text"><p><strong>Time: </strong><%= blog.time %></p></p>
+              </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="jumbotron jumbotron-fluid">
+              <div class="container">
+                <h1 class="display-4">Content</h1>
+                <p class="lead"><p><%= blog.content %></p></p>
+                <% (0...blog.images.count).each do |image| %>
+                    <%= image_tag(blog.images[image], style:"width: 100%; height: auto") %>
+                <% end %>
+                
+              </div>
+            </div>
+        </div>
+        <div class="button">
+            <%= link_to "Add Comments", blog, class:"btn btn-primary" %>
+            <br>
+            <br>
+            <br>
+            <h3> Comments: <%= blog.comments.count %></h3>
+        </div>
+    </div>
+   
+
+    
+     <br>

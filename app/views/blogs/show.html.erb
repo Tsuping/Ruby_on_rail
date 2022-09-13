@@ -1,0 +1,13 @@
+<% title "Blog" %>
+
+<%= render @blog %>
+<%= link_to "Edit", edit_blog_path(@blog) %> |
+<%= link_to "Delete", @blog, method: :delete, data: {confirm: "Are you sure?" } %> |
+<%= link_to "Back", blogs_path %>
+<br>
+<br>
+<h2>Comments: <%= @blog.comments.length %></h2>
+<%= render @blog.comments %>
+
+<%= render 'comments/form' %>
+<%= link_to "Add Comments", blog_comment_path(@blog), class:"btn btn-primary" %>

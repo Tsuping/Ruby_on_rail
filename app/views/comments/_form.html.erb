@@ -1,0 +1,11 @@
+<%= bootstrap_form_with(model: [@blog,@comment] , local: true, layout: :horizontal, 
+            label_col: "col-sm-2", control_col: "col-sm-10") do |f| %>
+  <%= f.alert_message "Please fix the error below"  %>
+  <%= f.text_field :name %>
+  <%= f.text_field :comment %>
+  <%= f.form_group do %>
+    <%= f.primary @comment.persisted? ? "Update Comment" : "Create comment" %>
+  <% end %>
+  
+    
+<% end %>

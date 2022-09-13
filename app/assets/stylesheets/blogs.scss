@@ -1,0 +1,37 @@
+.blog {
+    border: thin solid #000;
+    padding: 10px;
+}
+.blog {
+    display: flex; 
+    min-height: 200px;  
+    font-size:15px; 
+    border:2px solid gray; 
+}
+.column:nth-of-type(1){ 
+    flex: 0.5; 
+    margin-left: 30px;
+} 
+.column:nth-of-type(2){ 
+    flex: 0.75; 
+    margin-left: 30px;
+      
+} 
+.button {
+    flex: 0.25;
+    margin-right: 10px;
+    margin-left: 5px;
+}
+.page-id-45 #x-section-5 .wpcf7-form input[type="file"] {
+	margin: 0;
+	padding: 10px 10px 10px 35px;
+	height: 100%;
+	line-height: inherit;
+	left: 0;
+	z-index: 0;
+	opacity: 1;
+}
+
+.page-id-45 #x-section-5 .wpcf7-form input[type="file"]::-webkit-file-upload-button {
+	opacity: 0;
+}

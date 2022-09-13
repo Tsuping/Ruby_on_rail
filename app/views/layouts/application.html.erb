@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%= stylesheet_link_tag 'application' %>
+    <title>Blogauth <%= " | "+yield(:title) unless yield(:title).blank? %></title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+      <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+        <%= link_to "Blog", root_path, class: "navbar-brand" %>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+          <ul class="navbar-nav mr-auto">
+            <%= nav_link "Home", root_path %>
+            <%= nav_link "About", about_path %>
+            <% if current_user %>
+              <%= nav_link "Blogs", blogs_path %>
+            <% end %>
+            <% if current_user %>
+              <%= nav_link "Logout", logout_path %>
+              <ul class="navbar-nav pull-right mr-auto">
+                <%= nav_link current_user.name, current_user %>
+              </ul>
+            <% else %>
+              <%= nav_link "Sign Up", signup_path %>
+              <%= nav_link "Log In", login_path %>
+            <% end %>
+          </ul>
+        </div>
+        <div class="form-inline my-2 my-lg-0">
+          <%= form_tag search_blogs_path, method: :get do %>
+          <%= text_field_tag :search, nil, placeholder: "Search", class: "form-control mr-sm-2" %>
+          <%= submit_tag "Search", class: "btn btn-secondary my-2 my-sm-0" %>
+          <% end %>
+        </div>
+
+      </nav>
+      <div id="flash-messages" class="row">
+        <% flash.each do |name, msg| %>
+        <div class="alert alert-<%= name == 'notice' ? 'primary' : 'danger' %> alert-dismissable col" role="alert">
+          <%= msg %>
+          <button type="button" class="close" data-dismiss="alert" aria-label="close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <% end %>
+      </div>
+      <main role="main" class="container">
+        <% if @show_title %>
+        <div id="title" class="row">
+          <div class="col">
+            <h1><%= yield(:title) %></h1>
+          </div>
+        </div>
+        <% end %>
+          <%= yield %>
+      </main>
+  </body>
+  <br>
+  <br>
+  <br>
+<!-- Footer -->
+<footer class="page-footer font-small blue pt-4">
+
+  <!-- Footer Links -->
+  <div class="container-fluid text-center text-md-left">
+
+    <!-- Grid row -->
+    <div class="row">
+
+      <!-- Grid column -->
+      <div class="col-md-6 mt-md-0 mt-3">
+
+        <!-- Content -->
+        <h5 class="text-uppercase">Content</h5>
+        <p>If you have any question, feel free to contact school to obtain more information </p>
+
+      </div>
+      <!-- Grid column -->
+
+      <hr class="clearfix w-100 d-md-none pb-3">
+
+      <!-- Grid column -->
+      <div class="col-md-3 mb-md-0 mb-3">
+
+        <!-- Links -->
+        <h5 class="text-uppercase">Social Media</h5>
+
+        <ul class="list-unstyled">
+          <li>
+            <a href="https://www.facebook.com/byuhawaii/">Facebook</a>
+          </li>
+          <li>
+            <a href="https://www.instagram.com/byuhawaii/?hl=zh-tw">instagram</a>
+          </li>
+          <li>
+            <a href="https://twitter.com/byuhawaii">twitter</a>
+          </li>
+        </ul>
+
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-md-3 mb-md-0 mb-3">
+
+        <!-- Links -->
+        <h5 class="text-uppercase">Info</h5>
+
+        <ul class="list-unstyled">
+          <li>
+            <p class="info">Address: 55-220 Kulanui St, Laie, HI 96762</p>
+          </li>
+          <li>
+            <p class="info">Phone: +1 808-675-3211</p>
+          </li>
+        </ul>
+
+      </div>
+      <!-- Grid column -->
+
+    </div>
+
+  </div>
+  <div class="footer-copyright text-center py-3">© 2020 Copyright:
+    <a href="https://www.facebook.com/profile.php?id=100002962851082"> Tsu Ping Kuang</a>
+  </div>
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
+</html>

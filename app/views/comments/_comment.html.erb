@@ -1,0 +1,14 @@
+    <div id = "comment_<%= comment.id %>" class="blog">
+        <div class="columns">
+            <p>Name: <%= link_to_unless_current comment.name, blog_comment_path(@blog, comment)%></p>
+        </div>
+        <div class="columns">
+            <p>comment: <%= comment.comment %></p>
+        </div>
+        <div class="function">
+            <%= link_to "Edit", edit_blog_comment_path(@blog,comment), class:"btn btn-primary" %> |
+            <%= link_to "Delete", blog_comment_path(@blog,comment), method: :delete, data: {confirm: "are you sure?"}, class:"btn btn-primary" %>
+        </div>
+
+    </div>
+<br>

@@ -1,0 +1,20 @@
+<%= bootstrap_form_with(model: @blog , local: true, layout: :horizontal, 
+            label_col: "col-sm-2", control_col: "col-sm-10") do |f| %>
+  <%= f.alert_message "Please fix the error below"  %>
+  <%= f.text_field :title %>
+  <%= f.text_field :content %>
+  <%= f.text_field :author %>
+  <%= f.text_field :time %>
+  
+  <%= f.file_field :images, multiple: true %>
+
+
+
+    
+
+  <%= f.form_group do %>
+    <%= f.primary @blog.persisted? ? "Update" : "Create" %>
+  <% end %>
+  
+    
+<% end %>
